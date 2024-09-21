@@ -14,16 +14,16 @@ public class Client {
 
         Context context = new Context();
 
-        UserOnboardingProcess process = new UserOnboardingProcess();
-        process.addStep(new MobileOnboardingStep("9999999999"));
-        process.addStep(new EmailOnboardingStep("emaple@gamail.com"));
-        process.addStep(new CredentialVerificationStep("Aadhaar"));
-        process.addStep(new AccountExistenceVerificationStep());
+        UserOnboardingProcess userOnboardingProcess = new UserOnboardingProcess();
+        userOnboardingProcess.addStep(0,new MobileOnboardingStep("9999999999"));
+        userOnboardingProcess.addStep(1,new EmailOnboardingStep("emaple@gamail.com"));
+        userOnboardingProcess.addStep(2,new CredentialVerificationStep("Aadhaar"));
+        userOnboardingProcess.addStep(3,new AccountExistenceVerificationStep());
 
-        process.execute(context);
+        userOnboardingProcess.execute(context);
 
-        System.out.println("Mobile Onboarded: " + context.getData(MOBILE_ONBOARDING_STEP));
-        System.out.println("Mobile Onboarded: " + context.getData(EMAIL_ONBOARDING_STEP));
+        System.out.println("\nMobile Onboarded: " + context.getData(MOBILE_ONBOARDING_STEP));
+        System.out.println("Email Onboarded: " + context.getData(EMAIL_ONBOARDING_STEP));
         System.out.println("Credential Verified: " + context.getData(CREDENTIAL_VERIFICATION_STEP));
         System.out.println("Account Exists: " + context.getData(ACCOUNT_EXISTENCE_VERIFICATION_STEP));
     }
